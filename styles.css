@@ -118,6 +118,16 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
 }
+.cta-btn.secondary {
+    background: transparent;
+    border: 2px solid white;
+}
+
+.cta-btn.secondary:hover {
+    background: white;
+    color: #667eea;
+}
+
 
 @keyframes fadeInUp {
     from {
@@ -182,6 +192,232 @@ body {
     color: #666;
 }
 
+.price-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Gallery Section */
+.gallery {
+    padding: 5rem 5%;
+    background: white;
+    text-align: center;
+}
+
+.gallery h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    }
+
+.gallery-item:hover img {
+
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay h4 {
+    color: white;
+    font-size: 1.1rem;
+}
+
+        /* Testimonials Section */
+.testimonials {
+    padding: 5rem 5%;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.testimonials h2 {
+
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+}
+
+.testimonial-slider {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+
+}
+.testimonial {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    display: none;
+}
+
+.testimonial.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.testimonial p {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.testimonial h4 {
+    color: #2980b9;
+    font-size: 1.2rem;
+}
+
+.testimonial-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 2rem;
+}
+
+.testimonial-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.testimonial-dot.active {
+    background: #2980b9;
+}
+
+        /* Booking Form */
+.booking {
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+    color: white;
+    text-align: center;
+}
+
+.booking h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.booking-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.submit-btn {
+    background: #e74c3c;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+
 /* About Section */
 .about {
     padding: 5rem 5%;
@@ -202,6 +438,45 @@ body {
     color: #666;
     line-height: 1.8;
 }
+.about p {
+            
+    max-width: 800px;
+            
+    margin: 0 auto;
+            
+    font-size: 1.1rem;
+            
+    color: #666;
+            
+    line-height: 1.8;
+        
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 3rem auto 0;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2980b9;
+    display: block;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 1rem;
+}
+
+
 
 /* Contact Section */
 .contact {
@@ -219,6 +494,52 @@ body {
 .contact-info p {
     font-size: 1.1rem;
     margin: 1rem 0;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+
+    background: white;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close {
+
+
+    position: absolute;
+
+    right: 15px;
+            
+    top: 15px;
+            
+    font-size: 28px;
+            
+    font-weight: bold;
+            
+    cursor: pointer;
+            
+    color: #999;
+        
+}
+
+.close:hover {
+    color: #333;
 }
 
 /* Footer */
@@ -249,7 +570,44 @@ footer {
         grid-template-columns: 1fr;
     }
     
-    .destinations, .about, .contact {
+    .destinations, .about, .contact, .gallery, .testimonials, .booking {
         padding: 3rem 5%;
     }
+
+    form-row {
+                grid-template-columns: 1fr;
+            }
+
+    .stats{
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
+@keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }    
+
+    
+    
+
+    
+    
+
+   

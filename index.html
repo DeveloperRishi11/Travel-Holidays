@@ -15,6 +15,9 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#booking">Book Now</a></li>
                 <li><a href="#destinations">Destinations</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -28,28 +31,58 @@
                 <h2>Discover Amazing Destinations</h2>
                 <p>Create unforgettable memories with our curated travel experiences</p>
                 <button class="cta-btn" onclick="exploreDestinations()">Explore Now</button>
+                <button class="cta-btn secondary" onclick="openBookingForm()">Book Trip</button>
             </div>
         </section>
+
+            
 
         <section id="destinations" class="destinations">
             <h2>Popular Destinations</h2>
             <div class="destination-grid">
                 <div class="destination-card" onclick="showDetails('bhopal')">
+                    <div class="price-tag">₹15,000</div>
                     <img src="https://images.unsplash.com/photo-1602425815434-fcb761b33f88?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bhopal">
                     <h3>Bhopal</h3>
                     <p>City of Love & Lakes</p>
                 </div>
                 <div class="destination-card" onclick="showDetails('tokyo')">
+                    <div class="price-tag">₹85,000</div>
                     <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=300&h=200&fit=crop" alt="Tokyo">
                     <h3>Tokyo</h3>
                     <p>Modern Culture Hub</p>
                 </div>
                 <div class="destination-card" onclick="showDetails('bali')">
+                    <div class="price-tag">₹95,000</div>
                     <img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=300&h=200&fit=crop" alt="Bali">
                     <h3>Bali</h3>
                     <p>Tropical Paradise</p>
                 </div>
+
+                <div class="destination-card" onclick="showDetails('tokyo')">
+                    <div class="price-tag">₹85,000</div>
+                    <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=300&h=200&fit=crop" alt="Tokyo">
+                    <h3>Tokyo</h3>
+                    <p>Modern Culture Hub</p>
+                </div>
+                <div class="destination-card" onclick="showDetails('maldives')">
+                    <div class="price-tag">₹75,000</div>
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop" alt="Maldives">
+                    <h3>Maldives</h3>
+                    <p>Island Paradise</p>
+                </div>
+
+                 <div class="destination-card" onclick="showDetails('dubai')">
+                    <div class="price-tag">₹55,000</div>
+                    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=300&h=200&fit=crop" alt="Dubai">
+                    <h3>Dubai</h3>
+                    <p>Luxury & Adventure</p>
+                </div>
+
+
+
             </div>
+
         </section>
 
         <section id="about" class="about">
