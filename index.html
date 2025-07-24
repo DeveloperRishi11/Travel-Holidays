@@ -85,10 +85,135 @@
 
         </section>
 
+
+        <section id="gallery" class="gallery">
+            <h2>Travel Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openGalleryModal('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop" alt="Mountain View">
+                    <div class="gallery-overlay">
+                        <h4>Mountain Adventures</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop" alt="Beach">
+                    <div class="gallery-overlay">
+                        <h4>Beach Getaways</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop" alt="City">
+                    <div class="gallery-overlay">
+                        <h4>City Explorations</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop" alt="Culture">
+                    <div class="gallery-overlay">
+                        <h4>Cultural Heritage</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <h2>What Our Travelers Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial active">
+                    <p>"Amazing experience with Travel Holidays! Meenal organized everything perfectly. The trip to Bali was absolutely incredible!"</p>
+                    <h4>- Rahul Sharma</h4>
+                </div>
+                <div class="testimonial">
+                    <p>"Professional service and attention to detail. Our Tokyo trip exceeded all expectations. Highly recommended!"</p>
+                    <h4>- Priya Patel</h4>
+                </div>
+                <div class="testimonial">
+                    <p>"Best travel agency in Bhopal! The Dubai package was worth every penny. Thank you for making our honeymoon special!"</p>
+                    <h4>- Amit & Sneha</h4>
+                </div>
+                <div class="testimonial-nav">
+                    <span class="testimonial-dot active" onclick="showTestimonial(0)"></span>
+                    <span class="testimonial-dot" onclick="showTestimonial(1)"></span>
+                    <span class="testimonial-dot" onclick="showTestimonial(2)"></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="booking" class="booking">
+            <h2>Book Your Dream Trip</h2>
+            <form class="booking-form" onsubmit="submitBooking(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <select id="destination" name="destination" required>
+                            <option value="">Select Destination</option>
+                            <option value="bhopal">Bhopal - ₹15,000</option>
+                            <option value="tokyo">Tokyo - ₹85,000</option>
+                            <option value="bali">Bali - ₹45,000</option>
+                            <option value="paris">Paris - ₹95,000</option>
+                            <option value="maldives">Maldives - ₹75,000</option>
+                            <option value="dubai">Dubai - ₹55,000</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="travelers">Number of Travelers</label>
+                        <select id="travelers" name="travelers" required>
+                            <option value="">Select</option>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5+">5+ People</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="checkIn">Check-in Date</label>
+                        <input type="date" id="checkIn" name="checkIn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkOut">Check-out Date</label>
+                        <input type="date" id="checkOut" name="checkOut" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Special Requests</label>
+                    <textarea id="message" name="message" placeholder="Any special requirements or preferences..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Book Now</span>
+                    <span class="loading" style="display: none;"></span>
+                </button>
+            </form>
+        </section>
+
         <section id="about" class="about">
             <h2>About Travel Holidays</h2>
             <p>Welcome to Travel Holidays, your gateway to extraordinary adventures. Founded by Meenal Bansod, we specialize in creating personalized travel experiences that leave lasting impressions.</p>
         </section>
+
+
 
         <section id="contact" class="contact">
             <h2>Contact Us</h2>
@@ -96,9 +221,24 @@
                 <p>📧 info@travelholidays.com</p>
                 <p>📞 +91 7860096674</p>
                 <p>📍 Bhopal,India</p>
+                <p>🕒 Mon-Sat: 9AM-7PM</p>
             </div>
         </section>
     </main>
+      <div id="galleryModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('galleryModal')">&times;</span>
+            <img id="modalImage" src="" alt="Gallery Image" style="width: 100%; border-radius: 10px;">
+        </div>
+    </div>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('bookingModal')">&times;</span>
+            <h3>Booking Confirmation</h3>
+            <p id="bookingConfirmation"></p>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2025 Travel Holidays by Meenal Bansod. All rights reserved.</p>
