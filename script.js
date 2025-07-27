@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const btnText = submitBtn.querySelector('.btn-text');
             const loading = submitBtn.querySelector('.loading');
             
-            // Show loading state
+            // This will Show loading state
             btnText.style.display = 'none';
             loading.style.display = 'inline-block';
             submitBtn.disabled = true;
@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const confirmationText = `
                     Thank you, ${bookingData.name}!
                     
-                    Your booking request has been submitted successfully.
+                    Your booking request has been submitted successfully. Our Guide will Call You Shortly
                     
                     📍 Destination: ${bookingData.destination.charAt(0).toUpperCase() + bookingData.destination.slice(1)}
                     👥 Travelers: ${bookingData.travelers}
@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
    
 
-// Add CSS animation for ripple effect
+// Adding CSS animation for ripple effect
 const style = document.createElement('style');
 style.textContent = `
     @keyframes ripple {
