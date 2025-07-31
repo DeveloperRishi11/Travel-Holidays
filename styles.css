@@ -50,6 +50,7 @@ body {
     color: #333;
     font-weight: 500;
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
 .nav-menu a:hover {
@@ -111,6 +112,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     animation: fadeInUp 1s ease 0.4s both;
+    margin: 0 10px;
 }
 
 .cta-btn:hover {
@@ -118,6 +120,7 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
 }
+
 .cta-btn.secondary {
     background: transparent;
     border: 2px solid white;
@@ -127,7 +130,6 @@ body {
     background: white;
     color: #667eea;
 }
-
 
 @keyframes fadeInUp {
     from {
@@ -168,6 +170,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     cursor: pointer;
+    position: relative;
 }
 
 .destination-card:hover {
@@ -226,7 +229,6 @@ body {
 }
 
 .gallery-item {
-
     position: relative;
     overflow: hidden;
     border-radius: 10px;
@@ -243,15 +245,13 @@ body {
     height: 200px;
     object-fit: cover;
     transition: transform 0.3s ease;
-    }
+}
 
 .gallery-item:hover img {
-
     transform: scale(1.1);
 }
 
 .gallery-overlay {
-
     position: absolute;
     top: 0;
     left: 0;
@@ -274,7 +274,7 @@ body {
     font-size: 1.1rem;
 }
 
-        /* Testimonials Section */
+/* Testimonials Section */
 .testimonials {
     padding: 5rem 5%;
     background: #f8f9fa;
@@ -282,7 +282,6 @@ body {
 }
 
 .testimonials h2 {
-
     font-size: 2.5rem;
     margin-bottom: 3rem;
     color: #2c3e50;
@@ -292,8 +291,8 @@ body {
     max-width: 800px;
     margin: 0 auto;
     position: relative;
-
 }
+
 .testimonial {
     background: white;
     padding: 2rem;
@@ -345,7 +344,7 @@ body {
     background: #2980b9;
 }
 
-        /* Booking Form */
+/* Booking Form */
 .booking {
     padding: 5rem 5%;
     background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
@@ -417,7 +416,6 @@ body {
     transform: translateY(-2px);
 }
 
-
 /* About Section */
 .about {
     padding: 5rem 5%;
@@ -438,45 +436,6 @@ body {
     color: #666;
     line-height: 1.8;
 }
-.about p {
-            
-    max-width: 800px;
-            
-    margin: 0 auto;
-            
-    font-size: 1.1rem;
-            
-    color: #666;
-            
-    line-height: 1.8;
-        
-}
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    max-width: 800px;
-    margin: 3rem auto 0;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #2980b9;
-    display: block;
-}
-
-.stat-label {
-    color: #666;
-    font-size: 1rem;
-}
-
-
 
 /* Contact Section */
 .contact {
@@ -496,7 +455,7 @@ body {
     margin: 1rem 0;
 }
 
-/* Modal */
+/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -506,10 +465,10 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease;
 }
 
 .modal-content {
-
     background: white;
     margin: 5% auto;
     padding: 2rem;
@@ -517,29 +476,101 @@ body {
     width: 90%;
     max-width: 500px;
     position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .close {
-
-
     position: absolute;
-
     right: 15px;
-            
     top: 15px;
-            
     font-size: 28px;
-            
     font-weight: bold;
-            
     cursor: pointer;
-            
     color: #999;
-        
 }
 
 .close:hover {
     color: #333;
+}
+
+/* Login Form Specific Styles */
+.login-form {
+    text-align: center;
+}
+
+.login-form h3 {
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.login-form .form-group {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: #2980b9;
+}
+
+.login-btn {
+    width: 100%;
+    background: #2980b9;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.login-btn:hover {
+    background: #1f5f88;
+}
+
+.signup-link {
+    color: #2980b9;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+.forgot-password {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 1rem;
+}
+
+.forgot-password:hover {
+    color: #2980b9;
 }
 
 /* Footer */
@@ -548,6 +579,28 @@ footer {
     color: white;
     text-align: center;
     padding: 2rem;
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
 }
 
 /* Responsive Design */
@@ -574,40 +627,7 @@ footer {
         padding: 3rem 5%;
     }
 
-    form-row {
-                grid-template-columns: 1fr;
-            }
-
-    .stats{
-        grid-template-columns: repeat(2, 1fr);
+    .form-row {
+        grid-template-columns: 1fr;
     }
 }
-@keyframes ripple {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }    
-
-    
-    
-
-    
-    
-
-   
