@@ -21,7 +21,7 @@
                 <li><a href="#destinations">Destinations</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="Login">Login</a></li>
+                <li><a onclick="openLoginModal()">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -35,8 +35,6 @@
                 <button class="cta-btn secondary" onclick="openBookingForm()">Book Trip</button>
             </div>
         </section>
-
-            
 
         <section id="destinations" class="destinations">
             <h2>Popular Destinations</h2>
@@ -59,33 +57,20 @@
                     <h3>Bali</h3>
                     <p>Tropical Paradise</p>
                 </div>
-
-                <div class="destination-card" onclick="showDetails('tokyo')">
-                    <div class="price-tag">₹85,000</div>
-                    <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=300&h=200&fit=crop" alt="Tokyo">
-                    <h3>Tokyo</h3>
-                    <p>Modern Culture Hub</p>
-                </div>
                 <div class="destination-card" onclick="showDetails('maldives')">
                     <div class="price-tag">₹75,000</div>
                     <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop" alt="Maldives">
                     <h3>Maldives</h3>
                     <p>Island Paradise</p>
                 </div>
-
-                 <div class="destination-card" onclick="showDetails('dubai')">
+                <div class="destination-card" onclick="showDetails('dubai')">
                     <div class="price-tag">₹55,000</div>
                     <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=300&h=200&fit=crop" alt="Dubai">
                     <h3>Dubai</h3>
                     <p>Luxury & Adventure</p>
                 </div>
-
-
-
             </div>
-
         </section>
-
 
         <section id="gallery" class="gallery">
             <h2>Travel Gallery</h2>
@@ -214,8 +199,6 @@
             <p>Welcome to Travel Holidays, your gateway to extraordinary adventures. Founded by Meenal Bansod & Designed by Rishi, we specialize in creating personalized travel experiences that leave lasting impressions.</p>
         </section>
 
-
-
         <section id="contact" class="contact">
             <h2>Contact Us</h2>
             <div class="contact-info">
@@ -226,13 +209,43 @@
             </div>
         </section>
     </main>
-      <div id="galleryModal" class="modal">
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <form class="login-form" onsubmit="submitLogin(event)">
+                <h3>Welcome Back!</h3>
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" name="loginEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="loginPassword" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="login-btn">
+                    <span class="login-btn-text">Login</span>
+                    <span class="loading" style="display: none;"></span>
+                </button>
+                <a href="#" class="forgot-password" onclick="showForgotPassword()">Forgot Password?</a>
+                <p style="margin-top: 1rem; color: #666;">
+                    Don't have an account? 
+                    <a href="#" class="signup-link" onclick="showSignup()">Sign Up</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('galleryModal')">&times;</span>
             <img id="modalImage" src="" alt="Gallery Image" style="width: 100%; border-radius: 10px;">
         </div>
     </div>
 
+    <!-- Booking Confirmation Modal -->
     <div id="bookingModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('bookingModal')">&times;</span>
