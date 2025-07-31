@@ -474,3 +474,399 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+
+
+// Global variables
+let currentTestimonial = 0;
+const testimonials = document.querySelectorAll('.testimonial');
+const testimonialDots = document.querySelectorAll('.testimonial-dot');
+
+// Initialize the website
+document.addEventListener('DOMContentLoaded', function() {
+    initializeNavigation();
+    initializeScrollEffects();
+    initializeAnimations();
+    initTestimonialSlider();
+    initializeDateValidation();
+    initializeKeyboardNavigation();
+});
+
+// Navigation functions
+function initializeNavigation() {
+    const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// Scroll effects
+function initializeScrollEffects() {
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+        } else {
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        }
+    });
+}
+
+// Animation initialization
+function initializeAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    const cards = document.querySelectorAll('.destination-card, .gallery-item');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+        observer.observe(card);
+    });
+
+    // Add ripple effect to destination cards
+    addRippleEffect();
+}
+
+// Ripple effect for cards
+function addRippleEffect() {
+    const cards = document.querySelectorAll('.destination-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            const ripple = document.createElement('div');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(41, 128, 185, 0.3)';
+            ripple.style.transform = 'scale(0)';
+            ripple.style.animation = 'ripple 0.6s linear';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.style.width = size + 'px';
+            ripple.style.height = size + 'px';
+            
+            this.style.position = 'relative';
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+}
+
+// Hero section functions
+function exploreDestinations() {
+    const destinationsSection = document.getElementById('destinations');
+    destinationsSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+    
+    const btn = document.querySelector('.cta-btn');
+    btn.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+        btn.style.transform = 'scale(1)';
+    }, 150);
+}
+
+function openBookingForm() {
+    const bookingSection = document.getElementById('booking');
+    bookingSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+
+// Destination details function
+function showDetails(destination) {
+    const destinations = {
+        bhopal: {
+            name: 'Bhopal',
+            description: 'Experience the charm of Madhya Pradesh\'s capital with its beautiful lakes, historic monuments, and rich cultural heritage.',
+            highlights: ['Upper Lake & Lower Lake', 'Bhojpur Temple', 'Sanchi Stupa', 'Van Vihar National Park'],
+            price: '₹15,000',
+            duration: '3 Days / 2 Nights'
+        },
+        tokyo: {
+            name: 'Tokyo',
+            description: 'Discover the perfect blend of traditional culture and cutting-edge technology in Japan\'s vibrant capital.',
+            highlights: ['Tokyo Tower', 'Sensoji Temple', 'Shibuya Crossing', 'Mount Fuji Day Trip'],
+            price: '₹85,000',
+            duration: '7 Days / 6 Nights'
+        },
+        bali: {
+            name: 'Bali',
+            description: 'Relax in this tropical paradise with stunning beaches, ancient temples, and lush rice terraces.',
+            highlights: ['Ubud Rice Terraces', 'Tanah Lot Temple', 'Beautiful Beaches', 'Traditional Spa Treatments'],
+            price: '₹95,000',
+            duration: '5 Days / 4 Nights'
+        },
+        maldives: {
+            name: 'Maldives',
+            description: 'Escape to paradise with crystal-clear waters, overwater bungalows, and pristine coral reefs.',
+            highlights: ['Water Villas', 'Snorkeling & Diving', 'Sunset Cruises', 'Spa Treatments'],
+            price: '₹75,000',
+            duration: '4 Days / 3 Nights'
+        },
+        dubai: {
+            name: 'Dubai',
+            description: 'Experience luxury and adventure in this modern metropolis with its iconic skyline and desert landscapes.',
+            highlights: ['Burj Khalifa', 'Desert Safari', 'Dubai Mall', 'Palm Jumeirah'],
+            price: '₹55,000',
+            duration: '5 Days / 4 Nights'
+        }
+    };
+    
+    const dest = destinations[destination];
+    if (dest) {
+        alert(`🌟 ${dest.name} - ${dest.price}\n📅 ${dest.duration}\n\n${dest.description}\n\n✨ Highlights:\n${dest.highlights.map(h => `• ${h}`).join('\n')}\n\n📞 Contact Meenal Bansod for booking!\n📧 info@travelholidays.com\n📱 +91 7860096674`);
+    }
+}
+
+// Login Modal Functions
+function openLoginModal() {
+    const modal = document.getElementById('loginModal');
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function submitLogin(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const submitBtn = form.querySelector('.login-btn');
+    const btnText = submitBtn.querySelector('.login-btn-text');
+    const loading = submitBtn.querySelector('.loading');
+    
+    // Show loading state
+    btnText.style.display = 'none';
+    loading.style.display = 'inline-block';
+    submitBtn.disabled = true;
+    
+    // Get form data
+    const formData = new FormData(form);
+    const loginData = {
+        email: formData.get('loginEmail'),
+        password: formData.get('loginPassword')
+    };
+    
+    // Simulate login process
+    setTimeout(() => {
+        // Reset button state
+        btnText.style.display = 'inline';
+        loading.style.display = 'none';
+        submitBtn.disabled = false;
+        
+        // Close login modal
+        closeModal('loginModal');
+        
+        // Show success message
+        alert(`Welcome back! You have successfully logged in.\n\nEmail: ${loginData.email}\n\nYou can now access premium features and track your bookings.`);
+        
+        // Reset form
+        form.reset();
+        
+        // Update UI to show logged in state (optional)
+        updateLoginState(loginData.email);
+        
+    }, 2000);
+}
+
+function updateLoginState(email) {
+    // Update the login link to show user is logged in
+    const loginLink = document.querySelector('.nav-menu a[onclick="openLoginModal()"]');
+    if (loginLink) {
+        loginLink.innerHTML = `Welcome, ${email.split('@')[0]}`;
+        loginLink.onclick = null;
+        loginLink.style.color = '#2980b9';
+        loginLink.style.cursor = 'default';
+    }
+}
+
+function showForgotPassword() {
+    alert('Forgot Password functionality will be implemented soon.\n\nFor now, please contact us at:\n📧 info@travelholidays.com\n📞 +91 7860096674');
+}
+
+function showSignup() {
+    alert('Sign Up functionality will be implemented soon.\n\nFor now, please contact us to create an account:\n📧 info@travelholidays.com\n📞 +91 7860096674');
+}
+
+// Gallery modal functions
+function openGalleryModal(imageSrc) {
+    const modal = document.getElementById('galleryModal');
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = imageSrc;
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Modal management
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside
+window.addEventListener('click', function(e) {
+    const modals = ['galleryModal', 'bookingModal', 'loginModal'];
+    modals.forEach(modalId => {
+        const modal = document.getElementById(modalId);
+        if (e.target === modal) {
+            closeModal(modalId);
+        }
+    });
+});
+
+// Testimonial slider functionality
+function showTestimonial(index) {
+    testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+    testimonialDots.forEach(dot => dot.classList.remove('active'));
+    
+    testimonials[index].classList.add('active');
+    testimonialDots[index].classList.add('active');
+    currentTestimonial = index;
+}
+
+function initTestimonialSlider() {
+    setInterval(() => {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        showTestimonial(currentTestimonial);
+    }, 5000);
+}
+
+// Booking form submission
+function submitBooking(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const submitBtn = form.querySelector('.submit-btn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const loading = submitBtn.querySelector('.loading');
+    
+    // Show loading state
+    btnText.style.display = 'none';
+    loading.style.display = 'inline-block';
+    submitBtn.disabled = true;
+    
+    // Get form data
+    const formData = new FormData(form);
+    const bookingData = {
+        name: `${formData.get('firstName')} ${formData.get('lastName')}`,
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        destination: formData.get('destination'),
+        travelers: formData.get('travelers'),
+        checkIn: formData.get('checkIn'),
+        checkOut: formData.get('checkOut'),
+        message: formData.get('message')
+    };
+    
+    // Simulate booking process
+    setTimeout(() => {
+        // Reset button state
+        btnText.style.display = 'inline';
+        loading.style.display = 'none';
+        submitBtn.disabled = false;
+        
+        // Show confirmation
+        const confirmationText = `
+            Thank you, ${bookingData.name}!
+            
+            Your booking request has been submitted successfully. Our Guide will Call You Shortly
+            
+            📍 Destination: ${bookingData.destination.charAt(0).toUpperCase() + bookingData.destination.slice(1)}
+            👥 Travelers: ${bookingData.travelers}
+            📅 Check-in: ${bookingData.checkIn}
+            📅 Check-out: ${bookingData.checkOut}
+            
+            We will contact you at ${bookingData.email} or ${bookingData.phone} within 24 hours to confirm your booking.
+            
+            Booking ID: TH${Date.now().toString().slice(-6)}
+        `;
+        
+        document.getElementById('bookingConfirmation').innerText = confirmationText;
+        document.getElementById('bookingModal').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // Reset form
+        form.reset();
+        
+    }, 2000);
+}
+
+// Date validation for booking form
+function initializeDateValidation() {
+    const today = new Date().toISOString().split('T')[0];
+    const checkInDate = document.getElementById('checkIn');
+    const checkOutDate = document.getElementById('checkOut');
+    
+    checkInDate.setAttribute('min', today);
+    checkOutDate.setAttribute('min', today);
+    
+    checkInDate.addEventListener('change', function() {
+        const checkIn = new Date(this.value);
+        const nextDay = new Date(checkIn);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkOutDate.setAttribute('min', nextDay.toISOString().split('T')[0]);
+        
+        if (checkOutDate.value && new Date(checkOutDate.value) <= checkIn) {
+            checkOutDate.value = '';
+        }
+    });
+}
+
+// Keyboard navigation for modals
+function initializeKeyboardNavigation() {
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal('galleryModal');
+            closeModal('bookingModal');
+            closeModal('loginModal');
+        }
+    });
+}
+
+// Add CSS for ripple animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
